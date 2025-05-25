@@ -15,18 +15,10 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/result",
-      "dest": "/result.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/result",
+      "destination": "/result.html"
     }
   ],
   "headers": [
