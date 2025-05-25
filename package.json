@@ -1,0 +1,29 @@
+{
+  "name": "baoyouguomianshi",
+  "version": "1.0.0",
+  "description": "AI驱动的智能面试助手 - 一键生成专业、个性化的面试回答",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "start": "python3 -m http.server 8080",
+    "build": "echo 'Static site, no build needed'"
+  },
+  "keywords": [
+    "面试",
+    "AI",
+    "面试助手",
+    "求职",
+    "面试回答",
+    "职业发展"
+  ],
+  "author": "包你过面试团队",
+  "license": "MIT",
+  "homepage": "https://baoyouguomianshi.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/baoyouguomianshi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/baoyouguomianshi/issues"
+  }
+} 

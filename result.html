@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试回答 - 包你过面试</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+        rel="stylesheet"
+        as="style"
+        onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans:wght@400;500;700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;700;800"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .answer-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+            border-left: 4px solid;
+            border-image: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%) 1;
+        }
+        .copy-success {
+            animation: pulse 0.5s ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-['Plus_Jakarta_Sans']">
+    <div class="min-h-screen relative overflow-hidden">
+        <!-- 背景渐变 -->
+        <div class="absolute inset-0 gradient-bg opacity-5"></div>
+        
+        <!-- 主容器 -->
+        <div class="relative z-10 flex flex-col min-h-screen">
+            <!-- 导航栏 -->
+            <nav class="flex items-center justify-between p-6 md:px-12 border-b border-gray-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🎯</span>
+                    </div>
+                    <h1 class="text-xl font-bold gradient-text">包你过面试</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.history.back()" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <span>返回</span>
+                    </button>
+                    <button onclick="location.href='index.html'" class="gradient-bg px-4 py-2 rounded-lg text-white text-sm font-medium hover:opacity-90 transition-all">
+                        新建问答
+                    </button>
+                </div>
+            </nav>
+
+            <!-- 主内容区 -->
+            <main class="flex-1 px-6 py-8">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 问题标题 -->
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center space-x-2 bg-gray-800 px-4 py-2 rounded-full text-sm text-gray-300 mb-4">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            <span>AI生成完成</span>
+                        </div>
+                        <h1 id="question-title" class="text-3xl md:text-4xl font-bold mb-4 gradient-text">
+                            北京，产品经理，项目经验
+                        </h1>
+                        <div class="flex justify-center items-center space-x-4 text-sm text-gray-400">
+                            <span>语气：正式专业</span>
+                            <span>•</span>
+                            <span>生成时间：刚刚</span>
+                        </div>
+                    </div>
+
+                    <!-- 中文回答 -->
+                    <div class="card-gradient rounded-2xl p-8 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-white flex items-center">
+                                <span class="mr-3">🇨🇳</span>
+                                中文回答
+                            </h2>
+                            <div class="flex space-x-3">
+                                <button onclick="copyText('chinese-answer')" class="copy-btn flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all text-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>复制</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="chinese-answer" class="answer-card p-6 rounded-xl text-gray-100 leading-relaxed space-y-4">
+                            <p>
+                                在我担任北京某知名科技公司产品经理期间，我主导了一个革命性的移动应用项目，该项目显著提升了用户体验和商业价值。这个项目从概念到上线历时8个月，涉及跨部门协作和复杂的技术挑战。
+                            </p>
+                            <p>
+                                <strong>项目背景：</strong>我们发现现有产品的用户流失率较高，通过深入的用户调研和数据分析，确定了用户体验优化的关键痛点。我制定了详细的产品路线图，明确了核心功能优先级和里程碑目标。
+                            </p>
+                            <p>
+                                <strong>执行过程：</strong>我与设计团队紧密协作制定了新的交互设计标准，与工程团队进行技术方案评估，确保功能实现的可行性。同时建立了敏捷开发流程，每两周进行一次迭代评审，及时调整产品方向。
+                            </p>
+                            <p>
+                                <strong>项目成果：</strong>产品上线后6个月内，用户留存率提升了40%，日活跃用户增长35%，应用内转化率提升25%。更重要的是，用户满意度评分从3.2提升到4.6，获得了市场的广泛认可。
+                            </p>
+                            <p>
+                                这个项目不仅锻炼了我的产品策划能力，更重要的是提升了我在团队协作、数据驱动决策和用户体验设计方面的专业技能，为我未来在产品管理领域的发展奠定了坚实基础。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 英文回答 -->
+                    <div class="card-gradient rounded-2xl p-8 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-white flex items-center">
+                                <span class="mr-3">🇺🇸</span>
+                                English Version
+                            </h2>
+                            <div class="flex space-x-3">
+                                <button onclick="copyText('english-answer')" class="copy-btn flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all text-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="english-answer" class="answer-card p-6 rounded-xl text-gray-100 leading-relaxed space-y-4">
+                            <p>
+                                During my tenure as a Product Manager at a leading tech company in Beijing, I spearheaded a revolutionary mobile application project that significantly enhanced user experience and business value. This project took 8 months from conception to launch, involving cross-departmental collaboration and complex technical challenges.
+                            </p>
+                            <p>
+                                <strong>Project Background:</strong> We identified high user churn rates in our existing product. Through comprehensive user research and data analysis, I pinpointed key pain points in user experience optimization. I developed a detailed product roadmap, clearly defining core feature priorities and milestone objectives.
+                            </p>
+                            <p>
+                                <strong>Execution Process:</strong> I collaborated closely with the design team to establish new interaction design standards and worked with the engineering team to evaluate technical solutions, ensuring feature feasibility. I also implemented an agile development process with bi-weekly iteration reviews to adjust product direction promptly.
+                            </p>
+                            <p>
+                                <strong>Project Results:</strong> Within 6 months post-launch, user retention increased by 40%, daily active users grew by 35%, and in-app conversion rates improved by 25%. More importantly, user satisfaction scores increased from 3.2 to 4.6, earning widespread market recognition.
+                            </p>
+                            <p>
+                                This project not only strengthened my product planning capabilities but also enhanced my professional skills in team collaboration, data-driven decision making, and user experience design, laying a solid foundation for my future development in product management.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 操作按钮 -->
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <button onclick="saveAnswer()" class="flex items-center justify-center space-x-2 px-8 py-3 bg-gray-700 hover:bg-gray-600 rounded-xl text-white font-medium transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            <span>保存回答</span>
+                        </button>
+                        <button onclick="regenerateAnswer()" class="flex items-center justify-center space-x-2 px-8 py-3 gradient-bg hover:opacity-90 rounded-xl text-white font-medium transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                            <span>重新生成</span>
+                        </button>
+                        <button onclick="shareAnswer()" class="flex items-center justify-center space-x-2 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-medium transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                            </svg>
+                            <span>分享</span>
+                        </button>
+                    </div>
+
+                    <!-- 相关推荐 -->
+                    <div class="mt-12">
+                        <h3 class="text-xl font-bold mb-6 text-center">相关面试问题推荐</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="card-gradient p-6 rounded-xl hover:bg-opacity-20 transition-all cursor-pointer">
+                                <h4 class="font-semibold mb-2">介绍一下你的职业规划</h4>
+                                <p class="text-gray-400 text-sm">针对产品经理岗位的职业发展规划回答</p>
+                            </div>
+                            <div class="card-gradient p-6 rounded-xl hover:bg-opacity-20 transition-all cursor-pointer">
+                                <h4 class="font-semibold mb-2">你如何处理团队冲突？</h4>
+                                <p class="text-gray-400 text-sm">展示领导力和沟通协调能力的回答</p>
+                            </div>
+                            <div class="card-gradient p-6 rounded-xl hover:bg-opacity-20 transition-all cursor-pointer">
+                                <h4 class="font-semibold mb-2">描述一次失败的经历</h4>
+                                <p class="text-gray-400 text-sm">如何从失败中学习和成长的专业回答</p>
+                            </div>
+                            <div class="card-gradient p-6 rounded-xl hover:bg-opacity-20 transition-all cursor-pointer">
+                                <h4 class="font-semibold mb-2">为什么选择我们公司？</h4>
+                                <p class="text-gray-400 text-sm">展现对公司了解和求职动机的回答</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 页脚 -->
+            <footer class="text-center py-6 text-sm text-gray-500 border-t border-gray-800">
+                <p>© 2024 包你过面试. 让AI助您求职成功</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 提示消息 -->
+    <div id="toast" class="fixed top-4 right-4 transform translate-x-full transition-transform duration-300 z-50">
+        <div class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="toast-message">操作成功</span>
+        </div>
+    </div>
+
+    <script src="result.js"></script>
+</body>
+</html> 
