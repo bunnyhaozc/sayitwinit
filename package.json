@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "AI驱动的智能面试助手 - 一键生成专业、个性化的面试回答",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "python3 -m http.server 8080",
     "start": "python3 -m http.server 8080",
-    "build": "echo 'Static site, no build needed'"
+    "build": "echo 'Static site, no build needed'",
+    "serve": "python3 -m http.server 8080"
   },
   "keywords": [
     "面试",
@@ -25,5 +27,8 @@
   },
   "bugs": {
     "url": "https://github.com/yourusername/baoyouguomianshi/issues"
+  },
+  "devDependencies": {
+    "@stagewise/toolbar": "^0.2.1"
   }
-} 
+}

@@ -48,11 +48,20 @@
 git clone https://github.com/yourusername/baoyouguomianshi.git
 cd baoyouguomianshi
 
+# 安装依赖（开发工具）
+npm install
+
 # 启动本地服务器
-python -m http.server 8000
+npm run dev
 # 或
-npx live-server
+python -m http.server 8080
 ```
+
+**开发工具**: 在开发模式下，项目集成了 Stagewise 浏览器工具栏，提供：
+- 🔍 页面元素选择和检查
+- 📐 CSS 网格显示
+- 🛠️ 实时开发辅助功能
+- 💡 AI 驱动的代码编辑建议
 
 ### 3. 部署到Vercel
 ```bash
@@ -106,6 +115,7 @@ vercel --prod
 - **字体**：Plus Jakarta Sans + Noto Sans
 - **图标**：Heroicons SVG图标
 - **动画**：CSS3 + JavaScript
+- **开发工具**：Stagewise 浏览器工具栏（开发模式）
 - **部署平台**：Vercel
 
 ## 📱 功能特性

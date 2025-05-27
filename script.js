@@ -1,3 +1,62 @@
+// Stagewise工具栏集成 (仅开发模式)
+async function initializeStagewise() {
+    // 检查是否为开发环境
+    const isDevelopment = window.location.hostname === 'localhost' || 
+                         window.location.hostname === '127.0.0.1' ||
+                         window.location.port !== '';
+    
+    if (isDevelopment) {
+        try {
+            console.log('🚀 开始加载Stagewise工具栏...');
+            
+            // 为浏览器环境模拟 process 对象
+            if (typeof window !== 'undefined' && typeof window.process === 'undefined') {
+                window.process = { env: { NODE_ENV: 'development' } };
+            }
+            
+            // 使用 CDN 或 直接导入已安装的包
+            if (typeof window !== 'undefined') {
+                // 尝试加载 stagewise CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './node_modules/@stagewise/toolbar/dist/index.css';
+                link.onerror = () => {
+                    console.log('⚠️ Stagewise CSS 未找到，使用备选方案');
+                };
+                document.head.appendChild(link);
+                
+                // 动态导入 stagewise
+                const { initToolbar } = await import('./node_modules/@stagewise/toolbar/dist/index.js');
+                
+                // 从配置文件导入配置
+                const { stagewiseConfig } = await import('./stagewise.config.js');
+                
+                // 初始化工具栏
+                initToolbar(stagewiseConfig);
+                console.log('🎯 Stagewise工具栏已成功初始化!');
+                
+                // 添加开发模式标识
+                addDevModeIndicator();
+            }
+            
+        } catch (error) {
+            console.warn('⚠️ Stagewise工具栏加载失败:', error);
+            console.log('💡 提示：Stagewise工具栏为可选功能，使用备选开发工具栏');
+            
+            // 添加开发模式标识
+            addDevModeIndicator();
+            
+            // 启动备选开发工具栏
+            setTimeout(() => {
+                if (window.SimpleDevToolbar) {
+                    new SimpleDevToolbar();
+                    console.log('🛠️ 备选开发工具栏已启动');
+                }
+            }, 100);
+        }
+    }
+}
+
 // 全局变量
 let selectedTone = 'professional';
 
@@ -13,6 +72,8 @@ const exampleBtns = document.querySelectorAll('.example-btn');
 document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     addInputEnhancements();
+    // 初始化Stagewise工具栏（仅在开发模式）
+    initializeStagewise();
 });
 
 // 初始化事件监听器
@@ -325,6 +386,27 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+// 添加开发模式标识
+function addDevModeIndicator() {
+    const indicator = document.createElement('div');
+    indicator.style.cssText = `
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: bold;
+        z-index: 9999;
+        opacity: 0.8;
+        pointer-events: none;
+    `;
+    indicator.textContent = '🔧 开发模式';
+    document.body.appendChild(indicator);
+}
 
 // 页面加载完成后的初始化
 window.addEventListener('load', function() {

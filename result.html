@@ -223,6 +223,93 @@
         </div>
     </div>
 
+    <script src="dev-toolbar.js"></script>
+    <script>
+        // Stagewise工具栏集成 (仅开发模式)
+        async function initializeStagewise() {
+            // 检查是否为开发环境
+            const isDevelopment = window.location.hostname === 'localhost' || 
+                                 window.location.hostname === '127.0.0.1' ||
+                                 window.location.hostname === '0.0.0.0' ||
+                                 window.location.port !== '' ||
+                                 window.location.protocol === 'file:';
+            
+            if (isDevelopment) {
+                try {
+                    console.log('🚀 开始加载Stagewise工具栏...');
+                    
+                    // 为浏览器环境模拟 process 对象
+                    if (typeof window !== 'undefined' && typeof window.process === 'undefined') {
+                        window.process = { env: { NODE_ENV: 'development' } };
+                    }
+                    
+                    // 使用 CDN 或 直接导入已安装的包
+                    if (typeof window !== 'undefined') {
+                        // 尝试加载 stagewise CSS
+                        const link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.href = './node_modules/@stagewise/toolbar/dist/index.css';
+                        link.onerror = () => {
+                            console.log('⚠️ Stagewise CSS 未找到，使用备选方案');
+                        };
+                        document.head.appendChild(link);
+                        
+                        // 动态导入 stagewise
+                        const { initToolbar } = await import('./node_modules/@stagewise/toolbar/dist/index.js');
+                        
+                        // 从配置文件导入配置
+                        const { stagewiseConfig } = await import('./stagewise.config.js');
+                        
+                        // 初始化工具栏
+                        initToolbar(stagewiseConfig);
+                        console.log('🎯 Stagewise工具栏已成功初始化!');
+                        
+                        // 添加开发模式标识
+                        addDevModeIndicator();
+                    }
+                    
+                } catch (error) {
+                    console.warn('⚠️ Stagewise工具栏加载失败:', error);
+                    console.log('💡 提示：Stagewise工具栏为可选功能，使用备选开发工具栏');
+                    
+                    // 添加开发模式标识
+                    addDevModeIndicator();
+                    
+                    // 启动备选开发工具栏
+                    setTimeout(() => {
+                        if (window.SimpleDevToolbar) {
+                            new SimpleDevToolbar();
+                            console.log('🛠️ 备选开发工具栏已启动');
+                        }
+                    }, 100);
+                }
+            }
+        }
+
+        function addDevModeIndicator() {
+            const indicator = document.createElement('div');
+            indicator.style.cssText = `
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+                background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 6px;
+                font-size: 11px;
+                font-weight: 500;
+                z-index: 9000;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            `;
+            indicator.textContent = '🛠️ 开发模式';
+            document.body.appendChild(indicator);
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeStagewise();
+        });
+    </script>
     <script src="result.js"></script>
 </body>
 </html> 
